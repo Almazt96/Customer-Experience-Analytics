@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - task-2  # Recommended: Trigger on your current working branch too
-      - task-3  # Recommended: Trigger on your current working branch too 
+      
   pull_request:
     branches:
       - main

@@ -1,3 +1,10 @@
+# Data and databases
 data/
-__pycache__
-.env
+*.csv
+*.db
+*.json
+
+# Python environment
+venv/
+__pycache__/
+*.pyc
