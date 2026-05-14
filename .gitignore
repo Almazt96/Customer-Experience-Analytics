@@ -6,5 +6,7 @@ data/
 
 # Python environment
 venv/
+myenv/
+.venv/
 __pycache__/
 *.pyc
