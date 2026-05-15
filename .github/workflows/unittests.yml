@@ -38,3 +38,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-html
+      - name:  Run Unit Tests
+        run: |
+          pytest --html=report.html --self-contained-html
+        continue-on-error: true  # Continue even if tests fail to ensure report is generated
+      - name: Upload Test Report
+        if: always()  # Ensure this step runs even if previous steps 
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: report.html
