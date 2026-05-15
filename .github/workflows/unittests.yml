@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - task-2  # Recommended: Trigger on your current working branch too
+      - task-1  # Recommended: Trigger on your current working branch too
 
   pull_request:
     branches:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install TA-Lib Binary
         run: |
