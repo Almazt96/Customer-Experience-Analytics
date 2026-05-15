@@ -44,7 +44,7 @@ jobs:
         continue-on-error: true  # Continue even if tests fail to ensure report is generated
       - name: Upload Test Report
         if: always()  # Ensure this step runs even if previous steps 
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: report.html
