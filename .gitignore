@@ -1,0 +1,12 @@
+# Data and databases
+data/
+*.csv
+*.db
+*.json
+
+# Python environment
+venv/
+myenv/
+.venv/
+__pycache__/
+*.pyc
