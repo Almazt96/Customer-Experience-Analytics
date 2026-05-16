@@ -41,7 +41,7 @@ class TestBankScraper(unittest.TestCase):
         mock_reviews_func.return_value = (self.mock_reviews_data, None)
 
         # Execute
-        df = scrape_bank_reviews('prod.cbe.birr', 'CBE')
+        df = scrape_bank_reviews('com.combanketh.mobilebanking', 'CBE')
 
         # Assertions
         self.assertIsInstance(df, pd.DataFrame)

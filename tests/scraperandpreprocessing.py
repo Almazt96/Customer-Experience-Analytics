@@ -11,7 +11,7 @@ def get_db_engine():
     """Creates database engine securely when called."""
     try:
         # Replace with your actual database details if necessary
-        engine = create_engine('postgresql://postgres:password@localhost:5432/mobileapp')
+        engine = create_engine('postgresql://postgres:leulalmaz@localhost:5432/mobileapp')
         print("🎉 Connected successfully to the mobileapp database!")
         return engine
     except Exception as e:
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     
     # 2. Define targets
     apps_to_scrape = {
-        'CBE': 'prod.cbe.birr',
+        'CBE': 'com.combanketh.mobilebanking',
         'BOA': 'com.boa.boaMobileBanking',
         'Dashen': 'com.dashen.dashensuperapp'
     }
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # 4. Save and export safely inside the main block
     if scraped_dfs:
         all_reviews = pd.concat(scraped_dfs, ignore_index=True)
-        all_reviews.to_csv('bank_reviews.csv', index=False)
+        all_reviews.to_csv('./data/raw/bank_reviews.csv', index=False)
         print("\n✅ Success! Scraping completed and saved to bank_reviews.csv")
         print(f"Total reviews collected: {len(all_reviews)}")
         print(all_reviews['bank'].value_counts())
@@ -81,3 +81,37 @@ if __name__ == "__main__":
                 print(f"❌ Failed to save data to database: {e}")
     else:
         print("\n❌ Error: No reviews were collected for any bank. CSV not updated.")
+        
+    """ Preprocessing and Cleaning Steps
+After scraping, we need to clean the data to ensure we have 400 clean reviews for each bank. This involves:
+1. Removing any duplicate reviews
+2. Filtering out reviews that are too short or contain inappropriate content
+3. Standardizing the format of the reviews
+4. Handling missing values appropriately """
+# Example of cleaning the data
+def clean_reviews(df):
+    # Remove duplicates
+    df = df.drop_duplicates(subset=['content'])
+    
+    # Filter out short reviews (e.g., less than 10 characters)
+    df = df[df['content'].str.len() >= 10]
+    
+    # Optionally, filter out reviews with inappropriate content using a simple keyword filter
+    inappropriate_keywords = ['bad', 'worst', 'terrible']  # Example keywords
+    df = df[~df['content'].str.contains('|'.join(inappropriate_keywords), case=False)]
+    
+    # Handle missing values (e.g., fill with 'No review' or drop)
+    df['content'] = df['content'].fillna('No review')
+    
+    return df
+# Apply cleaning to each bank's reviews
+if scraped_dfs:
+    cleaned_dfs = [clean_reviews(df) for df in scraped_dfs]
+    all_cleaned_reviews = pd.concat(cleaned_dfs, ignore_index=True)
+    all_cleaned_reviews.to_csv('./data/cleaned/cleaned_bank_reviews.csv', index=False)
+    print("\n✅ Cleaning completed and saved to cleaned_bank_reviews.csv")
+    print(f"Total clean reviews collected: {len(all_cleaned_reviews)}")
+    print(all_cleaned_reviews['bank'].value_counts()) # Shows breakdown per bank
+else:
+    print("\n❌ Error: No reviews to clean. CSV not updated.")
+    
