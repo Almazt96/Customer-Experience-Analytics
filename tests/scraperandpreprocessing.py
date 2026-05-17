@@ -108,7 +108,7 @@ def clean_reviews(df):
 if scraped_dfs:
     cleaned_dfs = [clean_reviews(df) for df in scraped_dfs]
     all_cleaned_reviews = pd.concat(cleaned_dfs, ignore_index=True)
-    all_cleaned_reviews.to_csv('./data/cleaned/cleaned_bank_reviews.csv', index=False)
+    all_cleaned_reviews.to_csv('./data/processed/cleaned_bank_reviews.csv', index=False)
     print("\n✅ Cleaning completed and saved to cleaned_bank_reviews.csv")
     print(f"Total clean reviews collected: {len(all_cleaned_reviews)}")
     print(all_cleaned_reviews['bank'].value_counts()) # Shows breakdown per bank
