@@ -20,3 +20,20 @@ Raw payloads pass through a validation processing engine:
 ### 3. Limitations Encountered
 * **App Store Pagination Boundaries:** The Google Play Store caps depth limits on history pulls. Very old reviews may not be dynamically accessible without expanding regional localization parameters.
 * **Language Nuances:** Limiting requests exclusively to English (`lang='en'`)
+
+## Project Context
+Brief overview of what this project achieves and why it is being conducted.
+
+## Data Collection & Scraping Methodology
+* **Target Entities:** [Bank A], [Bank B], and [Bank C].
+* **Exact Target Date Range:** From `YYYY-MM-DD` to `YYYY-MM-DD`.
+* **Data Fields Extracted:** `review_id`, `review_date`, `rating`, `review_text`, etc.
+
+### Scraping Limitations & Constraints
+* **Pagination:** Limited to the first X pages due to site protection/performance.
+* **Language:** Restricted to [English/Amharic/etc.] reviews.
+* **API/Anti-Scraping:** Details on dynamic loading handling (e.g., Selenium/Playwright workarounds used or rate-limiting delays applied).
+
+## Generated Artifacts
+* **Preprocessed Dataset:** Located at `data/processed/`. Dates normalized to `YYYY-MM-DD`.
+* **Sentiment Output Model:** Contains fields `sentiment_label` and `sentiment_score` persisted to [CSV/Database].
