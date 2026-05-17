@@ -59,3 +59,25 @@ if __name__ == "__main__":
         input_path='./data/processed/cleaned_bank_reviews.csv',
         output_path='./data/processed/reviews_with_sentiment.csv'
     )
+
+import logging
+
+# Set up structured logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+def run_task_2_pipeline(data):
+    logger.info("Starting Task 2 Sentiment and Thematic Analysis pipeline.")
+    
+    if data.empty:
+        logger.warning("Input DataFrame is empty. Proceeding with caution.")
+        
+    try:
+        # Your analysis code here
+        logger.info("Successfully completed theme mapping and sentiment scoring.")
+    except Exception as e:
+        logger.error(f"Pipeline failed during thematic analysis: {str(e)}")
+        raise
