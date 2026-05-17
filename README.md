@@ -25,7 +25,7 @@ Raw payloads pass through a validation processing engine:
 Brief overview of what this project achieves and why it is being conducted.
 
 ## Data Collection & Scraping Methodology
-* **Target Entities:** [Bank A], [Bank B], and [Bank C].
+* **Target Entities:** [CBE], [BOA], and [Dashen].
 * **Exact Target Date Range:** From `YYYY-MM-DD` to `YYYY-MM-DD`.
 * **Data Fields Extracted:** `review_id`, `review_date`, `rating`, `review_text`, etc.
 
@@ -37,3 +37,14 @@ Brief overview of what this project achieves and why it is being conducted.
 ## Generated Artifacts
 * **Preprocessed Dataset:** Located at `data/processed/`. Dates normalized to `YYYY-MM-DD`.
 * **Sentiment Output Model:** Contains fields `sentiment_label` and `sentiment_score` persisted to [CSV/Database].
+
+<!-- Data Scope & Context
+Target Entities: This project analyzes data from the following Ethiopian banks:
+
+[Commercial Bank of Ethiopia (CBE)]
+
+[Abysinia Bank]
+
+[Dashen Bank]
+
+Date Range: The dataset covers observations and transactions spanning from [Start Date, e.g., January 1, 2025] to [End Date, e.g., December 31, 2025]. -->
