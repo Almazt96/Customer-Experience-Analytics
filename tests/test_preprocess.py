@@ -9,7 +9,7 @@ sys.modules['psycopg2'] = MagicMock()
 sys.modules['sqlalchemy'] = MagicMock()
 
 # 2. Safely import your function now that the database calls are neutralized
-from scraperandpreprocessing import scrape_bank_reviews
+from tests.scraperandpreprocessing import scrape_bank_reviews
 
 class TestBankScraper(unittest.TestCase):
 
@@ -34,7 +34,7 @@ class TestBankScraper(unittest.TestCase):
             }
         ]
 
-    @patch('scraperandpreprocessing.reviews')
+    @patch('tests.scraperandpreprocessing.reviews')
     def test_scrape_bank_reviews_success(self, mock_reviews_func):
         """Test that scrape_bank_reviews cleanly builds a DataFrame with proper bank tags."""
         # Configure the mock to return data like the real web API
@@ -50,7 +50,7 @@ class TestBankScraper(unittest.TestCase):
         self.assertEqual(df['bank'].iloc[0], 'CBE')
         self.assertEqual(df['content'].iloc[0], 'Great banking app!')
 
-    @patch('scraperandpreprocessing.reviews')
+    @patch('tests.scraperandpreprocessing.reviews')
     def test_scrape_bank_reviews_empty(self, mock_reviews_func):
         """Test behavior when an app target returns zero results."""
         mock_reviews_func.return_value = ([], None)

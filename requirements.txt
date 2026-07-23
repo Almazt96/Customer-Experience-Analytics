@@ -5,6 +5,7 @@ transformers
 torch
 spacy
 pytest
+pytest-cov
 numpy
 pandas
 matplotlib
