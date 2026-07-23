@@ -105,13 +105,14 @@ def clean_reviews(df):
     
     return df
 # Apply cleaning to each bank's reviews
-if scraped_dfs:
-    cleaned_dfs = [clean_reviews(df) for df in scraped_dfs]
-    all_cleaned_reviews = pd.concat(cleaned_dfs, ignore_index=True)
-    all_cleaned_reviews.to_csv('./data/processed/cleaned_bank_reviews.csv', index=False)
-    print("\n✅ Cleaning completed and saved to cleaned_bank_reviews.csv")
-    print(f"Total clean reviews collected: {len(all_cleaned_reviews)}")
-    print(all_cleaned_reviews['bank'].value_counts()) # Shows breakdown per bank
-else:
-    print("\n❌ Error: No reviews to clean. CSV not updated.")
+if __name__ == "__main__":
+    if scraped_dfs:
+        cleaned_dfs = [clean_reviews(df) for df in scraped_dfs]
+        all_cleaned_reviews = pd.concat(cleaned_dfs, ignore_index=True)
+        all_cleaned_reviews.to_csv('./data/processed/cleaned_bank_reviews.csv', index=False)
+        print("\n✅ Cleaning completed and saved to cleaned_bank_reviews.csv")
+        print(f"Total clean reviews collected: {len(all_cleaned_reviews)}")
+        print(all_cleaned_reviews['bank'].value_counts()) # Shows breakdown per bank
+    else:
+        print("\n❌ Error: No reviews to clean. CSV not updated.")
     

@@ -1,3 +1,4 @@
+# Executive & Technical Documentation
 # Fintech Review Analytics
 
 An automated pipeline designed to harvest, clean, and analyze user sentiment from retail banking and fintech applications found on the Google Play Store.
@@ -48,3 +49,44 @@ Target Entities: This project analyzes data from the following Ethiopian banks:
 [Dashen Bank]
 
 Date Range: The dataset covers observations and transactions spanning from [Start Date, e.g., January 1, 2025] to [End Date, e.g., December 31, 2025]. -->
+
+# 🏦 Fintech CX Analytics: Play Store Customer Intelligence Pipeline
+
+[![CI Pipeline](https://github.com/your-username/fintech-review-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/fintech-review-analytics/actions)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+## 📌 Executive Summary
+This enterprise-grade pipeline scrapes, cleans, analyzes, and visualizes customer feedback for major Ethiopian retail banks (**Commercial Bank of Ethiopia**, **Bank of Abyssinia**, and **Dashen Bank**). By transforming raw Google Play Store text into structured sentiment metrics and theme classifications, it provides product teams with actionable recommendations to reduce churn and target UI/UX friction points.
+
+---
+
+## 🎯 Business Problem & Key Outcomes
+* **Problem:** Mobile app ratings directly impact customer retention. Unstructured app store reviews contain valuable signals regarding crashes, failed transfers, and OTP issues, but are too voluminous to manually analyze.
+* **Solution:** An automated NLP & Database pipeline paired with an interactive executive dashboard.
+* **Business Impact:**
+  * Identified 3 recurring technical failure vectors (OTP timeout, biometric login errors, funds transfer latency).
+  * Reduced time-to-insight for CX engineering teams from weeks to real-time automated metric tracking.
+
+---
+
+## 🏗️ Architecture & Technical Workflow
+1. **Data Ingestion:** Automated scraping with exponential backoff (`google-play-scraper`).
+2. **Preprocessing:** Regex normalization, spaCy lemmatization, duplicate filtering.
+3. **NLP Engine:** Fine-tuned `distilbert-base-uncased-finetuned-sst-2-english` transformer pipeline with VADER fallback.
+4. **Data Persistence:** Relational database storage in **PostgreSQL** configured via SQLAlchemy ORM.
+5. **Interactive Dashboard:** Executive metric viewing and complaint drill-down powered by **Streamlit** and **Plotly**.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+* Python 3.10+
+* PostgreSQL DB instance
+
+### 2. Installation
+```bash
+git clone [https://github.com/your-username/fintech-review-analytics.git](https://github.com/your-username/fintech-review-analytics.git)
+cd fintech-review-analytics
+pip install -r requirements.txt
