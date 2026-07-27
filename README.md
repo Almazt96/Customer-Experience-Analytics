@@ -25,7 +25,16 @@ This enterprise-grade pipeline scrapes, cleans, analyzes, and visualizes custome
 4. **Data Persistence:** Relational database storage in **PostgreSQL** configured via SQLAlchemy ORM.
 5. **Interactive Dashboard:** Executive metric viewing and complaint drill-down powered by **Streamlit** and **Plotly**.
 
-# Fintech Review Analytics
+Here embeded you can find CI Badge
+
+![alt text](image-1.png)
+
+Here embeded you can find PYtest Result as follows
+
+![alt text](image.png)
+
+
+# Fintech Review Analytics Detaiils
 
 An automated pipeline designed to harvest, clean, and analyze user sentiment from retail banking and fintech applications found on the Google Play Store.
 
