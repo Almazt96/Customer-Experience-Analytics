@@ -25,7 +25,11 @@ This enterprise-grade pipeline scrapes, cleans, analyzes, and visualizes custome
 4. **Data Persistence:** Relational database storage in **PostgreSQL** configured via SQLAlchemy ORM.
 5. **Interactive Dashboard:** Executive metric viewing and complaint drill-down powered by **Streamlit** and **Plotly**.
 
-CI Badge
+Here embeded you can find CI Badge
+
+![alt text](image-1.png)
+
+Here embeded you can find PYtest Result as follows
 
 ![alt text](image.png)
 
